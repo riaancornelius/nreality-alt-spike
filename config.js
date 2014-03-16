@@ -1,0 +1,1 @@
+var config = {};config.routes = {}; config.routes.feed = '/event'; module.exports = config;
