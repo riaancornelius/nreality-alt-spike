@@ -1,5 +1,8 @@
+var http = require('http');
+var path = require('path');
+
 var express = require('express')
-    app = express.createServer(),
+    app = express(),
     config = require('./config'),
     mongoose = require('mongoose'),
     db = mongoose.connect('mongodb://cloud9:eK93cKuyX8m^@ds033469.mongolab.com:33469/alt-spike'),
@@ -16,6 +19,7 @@ var eventModel = mongoose.model('Event', Event);
  
 var event = new eventModel();
  
+ /*
 event.name = 'Helderfontein MTB open';
 event.description = 'First annual Helderfontein open MTB event';
 event.longitude = 28.027256;
@@ -25,6 +29,9 @@ event.save(function(err) {
   console.log('Event saved, starting server...');
   app.listen(3000);
 }); 
+ */
+ 
+app.set('port', process.env.PORT || 3000);
  
 app.configure( function() {
     console.log('I will be listening on: ' + config.routes.feed);
@@ -39,4 +46,8 @@ app.get(config.routes.feed, function(req, res) {
         res.send(JSON.stringify(event));
       }
     }).limit(1);
+});
+
+http.createServer(app).listen(app.get('port'), function(){
+  console.log('Express server listening on port ' + app.get('port'));
 });
