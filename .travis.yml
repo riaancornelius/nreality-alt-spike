@@ -1,16 +1,21 @@
 language: node_js
 node_js:
-  - "0.8"
-  - "0.10"
-  - "0.11"
+- '0.8'
+- '0.10'
+- '0.11'
 before_script:
-  - npm install -g grunt-cli
-  #- npm uninstall grunt # https://github.com/npm/npm/issues/3958
+- npm install -g grunt-cli
 matrix:
   fast_finish: true
   allow_failures:
-    - node_js: "0.11"
-
+  - node_js: '0.11'
 notifications:
   email:
-    - riaancornelius@gmail.com
+  - riaancornelius@gmail.com
+deploy:
+  provider: heroku
+  api_key:
+    secure: XeSmjRg2n7keGha+fAAOmv8nu6BgZrzgQH7K0few3WR8X0Ep1usGaJ5SL/qDZyeEBEKb1ZdG8i3oh7HfDai1TcYlqAtysDKMyt8dQ4grccKGgk+jbT2HlbSaUpXsK+d0ye1hpVM7SzQQ8Sml/Bxe5KBoYvlc4RTTdv8f0Q0IU+8=
+  app: nreality-alt-spike
+  on:
+    repo: riaancornelius/nreality-alt-spike
