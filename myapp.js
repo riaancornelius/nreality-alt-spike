@@ -26,8 +26,7 @@ event.longitude = 28.027256;
 event.latitude = -25.989118;
 event.save(function(err) {
   if (err) throw err;
-  console.log('Event saved, starting server...');
-  app.listen(3000);
+  console.log('Event saved...');
 }); 
  */
  
